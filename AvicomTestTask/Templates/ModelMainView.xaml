@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:AvicomTestTask.ViewModels"
+                    xmlns:view="clr-namespace:AvicomTestTask.Views">
+
+    <DataTemplate DataType="{x:Type vm:ClientsViewModel}">
+       <view:ClientsView DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProductsViewModel}">
+        <view:ProductsView DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ManagersViewModel}">
+        <view:ManagersView DataContext="{Binding}"/>
+    </DataTemplate>
+
+</ResourceDictionary>

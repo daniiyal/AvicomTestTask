@@ -1,0 +1,26 @@
+﻿<Window x:Class="AvicomTestTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AvicomTestTask"
+        DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="450" Width="800">
+    <DockPanel>
+        <Menu FontSize="18" Width="200" HorizontalAlignment="Center">
+            <Grid Margin="-7,0,0,0" Height="40">
+                <MenuItem  Width="200" Header="Менеджеры" Command="{Binding ShowManagersViewCommand}" />
+            </Grid>
+            <Grid  Margin="-7,0,0,0" Height="40">
+                <MenuItem Width="200" Header="Клиенты" Command="{Binding ShowClientsViewCommand}"/>
+            </Grid>
+            <Grid  Margin="-7,0,0,0" Height="40">
+                <MenuItem Width="200" Header="Продукты" Command="{Binding ShowProductsViewCommand}"/>
+            </Grid>
+        </Menu>
+
+        <ContentControl Content="{Binding CurrentModel}"/>
+
+    </DockPanel>
+</Window>
