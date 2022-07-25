@@ -93,7 +93,7 @@ namespace AvicomTestTask.ViewModels
         #endregion
 
 
-        #region Команда для добавления клиента
+        #region Команда для добавления продукта
 
         private ICommand _AddProductCommand;
 
@@ -118,7 +118,29 @@ namespace AvicomTestTask.ViewModels
         #endregion
 
 
-        #region Команда для удаления клиента
+        #region Команда для редактирования продукта
+
+        private ICommand _EditProductCommand;
+
+        public ICommand EditProductCommand => _EditProductCommand
+            ??= new LambdaCommand<Product>(OnEditProductCommandExecuted, CanEditProductCommandExecute);
+
+        private bool CanEditProductCommandExecute(Product c) => c != null || SelectedProduct != null;
+
+        private void OnEditProductCommandExecuted(Product c)
+        {
+            var productToEdit = c ?? SelectedProduct;
+
+            if (!_UserDialog.EditProduct(productToEdit, Products, ProductTypes, SubscriptionTimes)) return;
+
+            _ProductsRepository.Update(productToEdit);
+        }
+
+
+
+        #endregion
+
+        #region Команда для удаления продукта
 
         private ICommand _RemoveProductCommand;
 

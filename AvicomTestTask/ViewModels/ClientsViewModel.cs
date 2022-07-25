@@ -90,6 +90,7 @@ namespace AvicomTestTask.ViewModels
 
         #endregion
 
+       
 
         #region Команда для добавления клиента
 
@@ -115,6 +116,28 @@ namespace AvicomTestTask.ViewModels
 
         #endregion
 
+
+        #region Команда для редактирования менеджера
+
+        private ICommand _EditClientCommand;
+
+        public ICommand EditClientCommand => _EditClientCommand
+            ??= new LambdaCommand<Client>(OnEditClientCommandExecuted, CanEditClientCommandExecute);
+
+        private bool CanEditClientCommandExecute(Client c) => c != null || SelectedClient != null;
+
+        private void OnEditClientCommandExecuted(Client c)
+        {
+            var clientToEdit = c ?? SelectedClient;
+
+            if (!_UserDialog.EditClient(clientToEdit, Clients, Managers, Statuses)) return;
+
+            _ClientsRepository.Update(clientToEdit);
+        }
+
+
+
+        #endregion
 
         #region Команда для удаления клиента
 

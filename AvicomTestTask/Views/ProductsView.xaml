@@ -59,7 +59,9 @@
         <DockPanel Margin="10,10,10,10" Grid.Row="2">
             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="10, 0, 10, 0">
                 <Button Content="Добавить" Margin="5" Command="{Binding AddProductCommand}"/>
-                <Button Content="Редактировать" Margin="5"/>
+                <Button Content="Редактировать" Margin="5"
+                        Command="{Binding EditProductCommand}"
+                        CommandParameter="{Binding SelectedProduct}"/>
                 <Button Content="Удалить" Margin="5" 
                         Command="{Binding RemoveProductCommand}"
                         CommandParameter="{Binding SelectedProduct}"/>

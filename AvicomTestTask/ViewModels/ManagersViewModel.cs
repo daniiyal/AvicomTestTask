@@ -87,6 +87,28 @@ namespace AvicomTestTask.ViewModels
         #endregion
 
 
+        #region Команда для редактирования менеджера
+
+        private ICommand _EditManagerCommand;
+
+        public ICommand EditManagerCommand => _EditManagerCommand
+            ??= new LambdaCommand<Manager>(OnEditManagerCommandExecuted, CanEditManagerCommandExecute);
+
+        private bool CanEditManagerCommandExecute(Manager c) => c != null || SelectedManager != null;
+
+        private void OnEditManagerCommandExecuted(Manager c)
+        {
+            var managerToEdit = c ?? SelectedManager;
+
+            if (!_UserDialog.EditManager(managerToEdit)) return;
+
+            _ManagersRepository.Update(managerToEdit);
+        }
+
+
+
+        #endregion
+
         #region Команда для удаления менеджера
 
         private ICommand _RemoveManagerCommand;
