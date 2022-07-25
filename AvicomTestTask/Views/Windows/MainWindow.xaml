@@ -3,25 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AvicomTestTask"
+        xmlns:local="clr-namespace:AvicomTestTask" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800"
+        Title="{Binding Title}" Height="450" Width="1000"
         ResizeMode="NoResize"
         WindowStyle="SingleBorderWindow"
-        Background="Transparent"
-        >
-
+        Background="Transparent">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding ShowManagersViewCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border Background="#272535">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="39.531"/>
-                <ColumnDefinition Width="160.469"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
 
-            <Grid Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="75"/>
                     <RowDefinition Height="*"/>
@@ -39,9 +41,10 @@
                     <Separator VerticalAlignment="Bottom"/>
                 </Grid>
 
-                <StackPanel Grid.Row="1">
+                <StackPanel Grid.Row="1" >
                     <RadioButton Content="Менеджеры"
                                  Height="50"
+                                 IsChecked="True"
                                  Foreground="AliceBlue"
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding ShowManagersViewCommand}">
@@ -62,29 +65,9 @@
 
                     </RadioButton>
                 </StackPanel>
-                <!--<Menu FontSize="18" Width="200" HorizontalAlignment="Left">
-                    <Grid Margin="-7,0,0,0" Height="40" >
-                        <MenuItem  Width="200" Header="Менеджеры" 
-                                   
-                                   Command="{Binding ShowManagersViewCommand}" 
-                                   />
-                     
-                    </Grid>
-                    <Separator/>
-                    <Grid  Margin="-7,0,0,0" Height="40">
-              
-                        <MenuItem Width="200" Header="Клиенты" 
-                                  Command="{Binding ShowClientsViewCommand}"/>
-                    </Grid>
-                    <Separator/>
-                    <Grid  Margin="-7,0,0,0" Height="40">
-                        <MenuItem Width="200" Header="Продукты" 
-                                  Command="{Binding ShowProductsViewCommand}"/>
-                    </Grid>
-                </Menu>-->
             </Grid>
 
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="1">
                 <ContentControl Content="{Binding CurrentModel}"/>
             </Grid>
         </Grid>

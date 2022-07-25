@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AvicomTestTask.DAL
 {
-    class DbRepository<T> : IRepository<T> where T : Entity, new()
+    public class DbRepository<T> : IRepository<T> where T : Entity, new()
     {
         private readonly SoftTradeDB _db;
 

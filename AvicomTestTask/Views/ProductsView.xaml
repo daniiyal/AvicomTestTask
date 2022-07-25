@@ -25,19 +25,25 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Продукт" 
                        Grid.Column="0" 
                        Margin="13, 0, 0, 0"
                        Foreground="AliceBlue"
                        VerticalAlignment="Center"/>
-            <TextBlock Text="Тип лицензии" 
+            <TextBlock Text="Цена" 
                        Grid.Column="1" 
                        Margin="13, 0, 0, 0"
                        Foreground="AliceBlue"
                        VerticalAlignment="Center"/>
-            <TextBlock Text="Срок лицензии" 
+            <TextBlock Text="Тип лицензии" 
                        Grid.Column="2" 
+                       Margin="13, 0, 0, 0"
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"/>
+            <TextBlock Text="Срок лицензии" 
+                       Grid.Column="3" 
                        Margin="13, 0, 0, 0"
                        Foreground="AliceBlue"
                        VerticalAlignment="Center"/>
@@ -54,6 +60,7 @@
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25"/>
@@ -61,8 +68,9 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Text="{Binding Name}" Grid.Column="0"/>
-                            <TextBlock Text="{Binding ProductType.Name}" Grid.Column="1"/>
-                            <TextBlock Text="{Binding SubscriptionTime.Name}" Grid.Column="2"/>
+                            <TextBlock Text="{Binding Price}" Grid.Column="1"/>
+                            <TextBlock Text="{Binding ProductType.Name}" Grid.Column="2"/>
+                            <TextBlock Text="{Binding SubscriptionTime.Name}" Grid.Column="3"/>
 
                         </Grid>
                     </DataTemplate>

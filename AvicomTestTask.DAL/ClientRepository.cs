@@ -5,7 +5,8 @@ using System.Linq;
 
 namespace AvicomTestTask.DAL
 {
-    class ClientRepository : DbRepository<Client>
+    public class ClientRepository : DbRepository<Client>
+
     {
         public ClientRepository(SoftTradeDB db) : base(db)
         {
