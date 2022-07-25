@@ -62,7 +62,7 @@ namespace AvicomTestTask.ViewModels
 
 
 
-        #region Команда для добавления клиента
+        #region Команда для добавления менеджера
 
         private ICommand _AddManagerCommand;
 
@@ -94,11 +94,11 @@ namespace AvicomTestTask.ViewModels
         public ICommand EditManagerCommand => _EditManagerCommand
             ??= new LambdaCommand<Manager>(OnEditManagerCommandExecuted, CanEditManagerCommandExecute);
 
-        private bool CanEditManagerCommandExecute(Manager c) => c != null || SelectedManager != null;
+        private bool CanEditManagerCommandExecute(Manager m) => m != null || SelectedManager != null;
 
-        private void OnEditManagerCommandExecuted(Manager c)
+        private void OnEditManagerCommandExecuted(Manager m)
         {
-            var managerToEdit = c ?? SelectedManager;
+            var managerToEdit = m ?? SelectedManager;
 
             if (!_UserDialog.EditManager(managerToEdit)) return;
 
@@ -116,11 +116,11 @@ namespace AvicomTestTask.ViewModels
         public ICommand RemoveManagerCommand => _RemoveManagerCommand
             ??= new LambdaCommand<Manager>(OnRemoveManagerCommandExecuted, CanRemoveManagerCommandExecute);
 
-        private bool CanRemoveManagerCommandExecute(Manager c) => c != null || SelectedManager != null;
+        private bool CanRemoveManagerCommandExecute(Manager m) => m != null || SelectedManager != null;
 
-        private void OnRemoveManagerCommandExecuted(Manager c)
+        private void OnRemoveManagerCommandExecuted(Manager m)
         {
-            var managerToRemove = c ?? SelectedManager;
+            var managerToRemove = m ?? SelectedManager;
 
             if (!_UserDialog.ConfirmWarning($"Вы хотите удалить менеджера {managerToRemove.Name}?", "Удаление менеджера"))
                 return;

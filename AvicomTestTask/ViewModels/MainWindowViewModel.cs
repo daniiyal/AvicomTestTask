@@ -19,7 +19,7 @@ namespace AvicomTestTask.ViewModels
         private readonly IRepository<SubscriptionTime> _SubscriptionTimes;
         //private readonly IRepository<Order> _Orders;
 
-        private string _Title = "Главное окно";
+        private string _Title = "OOO SoftTradePlus";
 
         public string Title { get=> _Title; set => Set(ref _Title, value); }
 

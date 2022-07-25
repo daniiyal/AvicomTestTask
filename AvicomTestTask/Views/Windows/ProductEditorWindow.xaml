@@ -7,6 +7,8 @@
         xmlns:vm="clr-namespace:AvicomTestTask.ViewModels"
         d:DataContext="{d:DesignInstance vm:ProductEditorViewModel}"
         mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
         Title="Редактор продукта" Height="250" Width="350">
     <Grid>
         <Grid.ColumnDefinitions>

@@ -114,7 +114,6 @@ namespace AvicomTestTask.ViewModels
         }
 
 
-
         #endregion
 
 
@@ -125,11 +124,11 @@ namespace AvicomTestTask.ViewModels
         public ICommand EditProductCommand => _EditProductCommand
             ??= new LambdaCommand<Product>(OnEditProductCommandExecuted, CanEditProductCommandExecute);
 
-        private bool CanEditProductCommandExecute(Product c) => c != null || SelectedProduct != null;
+        private bool CanEditProductCommandExecute(Product p) => p != null || SelectedProduct != null;
 
-        private void OnEditProductCommandExecuted(Product c)
+        private void OnEditProductCommandExecuted(Product p)
         {
-            var productToEdit = c ?? SelectedProduct;
+            var productToEdit = p ?? SelectedProduct;
 
             if (!_UserDialog.EditProduct(productToEdit, Products, ProductTypes, SubscriptionTimes)) return;
 

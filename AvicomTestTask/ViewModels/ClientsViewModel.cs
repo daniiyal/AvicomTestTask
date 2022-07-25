@@ -117,7 +117,7 @@ namespace AvicomTestTask.ViewModels
         #endregion
 
 
-        #region Команда для редактирования менеджера
+        #region Команда для редактирования клиента
 
         private ICommand _EditClientCommand;
 

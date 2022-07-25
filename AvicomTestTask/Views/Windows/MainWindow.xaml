@@ -6,21 +6,88 @@
         xmlns:local="clr-namespace:AvicomTestTask"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800">
-    <DockPanel>
-        <Menu FontSize="18" Width="200" HorizontalAlignment="Center">
-            <Grid Margin="-7,0,0,0" Height="40">
-                <MenuItem  Width="200" Header="Менеджеры" Command="{Binding ShowManagersViewCommand}" />
-            </Grid>
-            <Grid  Margin="-7,0,0,0" Height="40">
-                <MenuItem Width="200" Header="Клиенты" Command="{Binding ShowClientsViewCommand}"/>
-            </Grid>
-            <Grid  Margin="-7,0,0,0" Height="40">
-                <MenuItem Width="200" Header="Продукты" Command="{Binding ShowProductsViewCommand}"/>
-            </Grid>
-        </Menu>
+        Title="{Binding Title}" Height="450" Width="800"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        Background="Transparent"
+        >
 
-        <ContentControl Content="{Binding CurrentModel}"/>
+    <Border Background="#272535">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="39.531"/>
+                <ColumnDefinition Width="160.469"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-    </DockPanel>
+
+            <Grid Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock Text="SoftTrade"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           FontSize="22"
+                           
+                           Foreground="AliceBlue"
+                           Margin="20,0,0,0"/>
+
+                    <Separator VerticalAlignment="Bottom"/>
+                </Grid>
+
+                <StackPanel Grid.Row="1">
+                    <RadioButton Content="Менеджеры"
+                                 Height="50"
+                                 Foreground="AliceBlue"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding ShowManagersViewCommand}">
+
+                    </RadioButton>
+                    <RadioButton Content="Клиенты"
+                                 Height="50"
+                                 Foreground="AliceBlue"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding ShowClientsViewCommand}">
+
+                    </RadioButton>
+                    <RadioButton Content="Продукты"
+                                 Height="50"
+                                 Foreground="AliceBlue"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding ShowProductsViewCommand}">
+
+                    </RadioButton>
+                </StackPanel>
+                <!--<Menu FontSize="18" Width="200" HorizontalAlignment="Left">
+                    <Grid Margin="-7,0,0,0" Height="40" >
+                        <MenuItem  Width="200" Header="Менеджеры" 
+                                   
+                                   Command="{Binding ShowManagersViewCommand}" 
+                                   />
+                     
+                    </Grid>
+                    <Separator/>
+                    <Grid  Margin="-7,0,0,0" Height="40">
+              
+                        <MenuItem Width="200" Header="Клиенты" 
+                                  Command="{Binding ShowClientsViewCommand}"/>
+                    </Grid>
+                    <Separator/>
+                    <Grid  Margin="-7,0,0,0" Height="40">
+                        <MenuItem Width="200" Header="Продукты" 
+                                  Command="{Binding ShowProductsViewCommand}"/>
+                    </Grid>
+                </Menu>-->
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <ContentControl Content="{Binding CurrentModel}"/>
+            </Grid>
+        </Grid>
+    </Border>
+
 </Window>

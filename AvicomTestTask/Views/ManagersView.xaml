@@ -24,11 +24,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Менеджер" Grid.Column="1" Margin="13, 0, 0, 0"/>
+            <TextBlock Text="Менеджер" Grid.Column="1" Margin="13, 0, 0, 0" VerticalAlignment="Center" Foreground="AliceBlue"/>
         </Grid>
         <GroupBox Grid.Row="1">
             <ListBox ItemsSource="{Binding Managers}" d:ItemsSource="{d:SampleData ItemCount=5}"
-                     SelectedItem="{Binding SelectedManager}">
+                     SelectedItem="{Binding SelectedManager}"
+                     Foreground="AliceBlue">
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>

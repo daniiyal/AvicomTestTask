@@ -16,8 +16,8 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition/>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
         <Grid>
@@ -26,14 +26,32 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Клиент" Grid.Column="0" Margin="13, 0, 0, 0"/>
-            <TextBlock Text="Менеджер" Grid.Column="1" Margin="13, 0, 0, 0"/>
-            <TextBlock Text="Статус" Grid.Column="2" Margin="13, 0, 0, 0"/>
+
+         
+                <TextBlock Text="Клиент" Grid.Column="0" 
+                       Margin="13, 0, 0, 0" 
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"
+                      />
+
+                <TextBlock Text="Менеджер" Grid.Column="1" 
+                       Margin="13, 0, 0, 0" 
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"/>
+                <TextBlock Text="Статус" Grid.Column="2" 
+                       Margin="13, 0, 0, 0" 
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"/>
+
+            
         </Grid>
         <GroupBox Grid.Row="1">
+          
             <ListBox ItemsSource="{Binding Clients}" 
-                     SelectedItem="{Binding SelectedClient}"
-                     d:ItemsSource="{d:SampleData ItemCount=5}">
+                         SelectedItem="{Binding SelectedClient}"
+                         d:ItemsSource="{d:SampleData ItemCount=5}"
+                         Foreground="AliceBlue"
+                         >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -46,11 +64,11 @@
                                 <RowDefinition Height="25"/>
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                        
+
                             <TextBlock Text="{Binding Name}" Grid.Column="0"/>
                             <TextBlock Text="{Binding Manager.Name}" Grid.Column="1"/>
                             <TextBlock Text="{Binding Status.Name}" Grid.Column="2"/>
-                       
+
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

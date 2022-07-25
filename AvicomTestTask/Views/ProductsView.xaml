@@ -26,14 +26,27 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Продукт" Grid.Column="0" Margin="13, 0, 0, 0"/>
-            <TextBlock Text="Тип лицензии" Grid.Column="1" Margin="13, 0, 0, 0"/>
-            <TextBlock Text="Срок лицензии" Grid.Column="2" Margin="13, 0, 0, 0"/>
+            <TextBlock Text="Продукт" 
+                       Grid.Column="0" 
+                       Margin="13, 0, 0, 0"
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"/>
+            <TextBlock Text="Тип лицензии" 
+                       Grid.Column="1" 
+                       Margin="13, 0, 0, 0"
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"/>
+            <TextBlock Text="Срок лицензии" 
+                       Grid.Column="2" 
+                       Margin="13, 0, 0, 0"
+                       Foreground="AliceBlue"
+                       VerticalAlignment="Center"/>
         </Grid>
         <GroupBox Grid.Row="1">
             <ListBox ItemsSource="{Binding Products}" 
                      SelectedItem="{Binding SelectedProduct}"
-                     d:ItemsSource="{d:SampleData ItemCount=5}">
+                     d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Foreground="AliceBlue">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

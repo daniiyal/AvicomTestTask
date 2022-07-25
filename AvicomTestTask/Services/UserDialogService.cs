@@ -78,7 +78,10 @@ namespace AvicomTestTask.Services
 
             product.Name = productEditorModel.Name;
             product.ProductType = productEditorModel.ProductType;
-            product.SubscriptionTime = productEditorModel.SubscriptionTime;
+            if (product.ProductType.Id == 2)
+                product.SubscriptionTime = null;
+            else
+                product.SubscriptionTime = productEditorModel.SubscriptionTime;
 
             return true;
         }
