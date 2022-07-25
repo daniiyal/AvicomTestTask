@@ -17,8 +17,7 @@ namespace AvicomTestTask.ViewModels
         private readonly IRepository<Manager> _Managers;
         private readonly IRepository<ProductType> _ProductTypes;
         private readonly IRepository<SubscriptionTime> _SubscriptionTimes;
-        //private readonly IRepository<Order> _Orders;
-
+      
         private string _Title = "OOO SoftTradePlus";
 
         public string Title { get=> _Title; set => Set(ref _Title, value); }
@@ -42,7 +41,7 @@ namespace AvicomTestTask.ViewModels
             _SubscriptionTimes = SubscriptionTimes;
         }
 
-        #region Текущаая модель-представление
+        #region Текущая модель-представление
 
         private ViewModel _CurrentModel;
 

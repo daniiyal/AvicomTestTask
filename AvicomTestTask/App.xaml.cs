@@ -12,7 +12,7 @@ namespace AvicomTestTask
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         public static Window ActiveWindow => Application.Current.Windows
             .OfType<Window>()
@@ -33,8 +33,6 @@ namespace AvicomTestTask
 
         private static IHost __Host;
 
-
-
         public static IHost Host => __Host
             ??= CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
@@ -43,9 +41,9 @@ namespace AvicomTestTask
 
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
+            .AddDatabase(host.Configuration.GetSection("Database"))
             .AddServices()
             .AddViewModels()
-            .AddDatabase(host.Configuration.GetSection("Database"))
             ;
 
         protected override async void OnStartup(StartupEventArgs e)

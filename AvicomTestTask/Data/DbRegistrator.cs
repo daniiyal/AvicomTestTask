@@ -16,8 +16,7 @@ namespace AvicomTestTask.Data
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration) => services
             .AddDbContext<SoftTradeDB>(opt =>
             {
-                var type = configuration["Type"];
-                opt.UseSqlServer(configuration.GetConnectionString(type));
+                opt.UseSqlServer(configuration.GetConnectionString("MSSQL"));
             })
             .AddRepositoriesDB()
             ;

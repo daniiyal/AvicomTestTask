@@ -1,10 +1,5 @@
 ﻿using AvicomTestTask.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AvicomTestTask.DAL.Context
 {
@@ -26,7 +21,7 @@ namespace AvicomTestTask.DAL.Context
         public DbSet<Status> Statuses { get; set; }
 
 
-        public SoftTradeDB(DbContextOptions<SoftTradeDB> options): base(options)
+        public SoftTradeDB(DbContextOptions<SoftTradeDB> options) : base(options)
 
         {
 
