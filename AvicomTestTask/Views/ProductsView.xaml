@@ -3,10 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AvicomTestTask.Views"
+             xmlns:local="clr-namespace:AvicomTestTask.Views" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+             xmlns:vm="clr-namespace:AvicomTestTask.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=vm:ProductsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Продукт" Grid.Column="0" Margin="13, 0, 0, 0"/>
+            <TextBlock Text="Тип лицензии" Grid.Column="1" Margin="13, 0, 0, 0"/>
+            <TextBlock Text="Срок лицензии" Grid.Column="2" Margin="13, 0, 0, 0"/>
+        </Grid>
+        <GroupBox Grid.Row="1">
+            <ListBox ItemsSource="{Binding Products}" 
+                     SelectedItem="{Binding SelectedProduct}"
+                     d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="{Binding Name}" Grid.Column="0"/>
+                            <TextBlock Text="{Binding ProductType.Name}" Grid.Column="1"/>
+                            <TextBlock Text="{Binding SubscriptionTime.Name}" Grid.Column="2"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+        <DockPanel Margin="10,10,10,10" Grid.Row="2">
+            <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="10, 0, 10, 0">
+                <Button Content="Добавить" Margin="5" Command="{Binding AddProductCommand}"/>
+                <Button Content="Редактировать" Margin="5"/>
+                <Button Content="Удалить" Margin="5" 
+                        Command="{Binding RemoveProductCommand}"
+                        CommandParameter="{Binding SelectedProduct}"/>
+
+            </UniformGrid>
+        </DockPanel>
     </Grid>
 </UserControl>

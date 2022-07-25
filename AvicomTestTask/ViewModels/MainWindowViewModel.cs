@@ -15,25 +15,31 @@ namespace AvicomTestTask.ViewModels
         private readonly IRepository<Product> _Products;
         private readonly IRepository<Status> _Statuses;
         private readonly IRepository<Manager> _Managers;
+        private readonly IRepository<ProductType> _ProductTypes;
+        private readonly IRepository<SubscriptionTime> _SubscriptionTimes;
         //private readonly IRepository<Order> _Orders;
 
         private string _Title = "Главное окно";
 
         public string Title { get=> _Title; set => Set(ref _Title, value); }
-        //public IRepository<Product> Repository { get; }
+
 
         public MainWindowViewModel(
             IUserDialog UserDialog,
             IRepository<Client> Clients,
             IRepository<Manager> Managers,
             IRepository<Product> Products,
-            IRepository<Status> Statuses)
+            IRepository<Status> Statuses,
+            IRepository<ProductType> ProductTypes,
+            IRepository<SubscriptionTime> SubscriptionTimes)
         {
             _UserDialog = UserDialog;
             _Clients = Clients;
             _Managers = Managers;
             _Products = Products;
             _Statuses = Statuses;
+            _ProductTypes = ProductTypes;
+            _SubscriptionTimes = SubscriptionTimes;
         }
 
         #region Текущаая модель-представление
@@ -66,7 +72,7 @@ namespace AvicomTestTask.ViewModels
 
         private void OnShowProductsViewCommandExecuted()
         {
-            CurrentModel = new ProductsViewModel(_Products);
+            CurrentModel = new ProductsViewModel(_Products, _ProductTypes, _SubscriptionTimes, _UserDialog);
         }
 
         private ICommand _ShowManagersViewCommand;
@@ -78,7 +84,7 @@ namespace AvicomTestTask.ViewModels
 
         private void OnShowManagersViewCommandExecuted()
         {
-            CurrentModel = new ManagersViewModel(_Managers);
+            CurrentModel = new ManagersViewModel(_Managers, _UserDialog);
         }
 
     }

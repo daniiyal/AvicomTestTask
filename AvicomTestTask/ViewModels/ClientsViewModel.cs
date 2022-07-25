@@ -69,7 +69,7 @@ namespace AvicomTestTask.ViewModels
 
         private Client _SelectedClient;
 
-        public Client SelectedClient { get => _SelectedClient; set=>Set(ref _SelectedClient, value); }
+        public Client SelectedClient { get => _SelectedClient; set => Set(ref _SelectedClient, value); }
 
 
         #region Команда для загрузки данных
@@ -83,16 +83,12 @@ namespace AvicomTestTask.ViewModels
 
         private async Task OnLoadDataCommandExecuted()
         {
-
             Clients = new ObservableCollection<Client>(await _ClientsRepository.Items.ToArrayAsync());
             Managers = new ObservableCollection<Manager>(await _ManagerRepository.Items.ToArrayAsync());
             Statuses = new ObservableCollection<Status>(await _StatusRepository.Items.ToArrayAsync());
         }
 
-
-
         #endregion
-
 
 
         #region Команда для добавления клиента
@@ -108,7 +104,7 @@ namespace AvicomTestTask.ViewModels
         {
             var newClient = new Client();
 
-           if (!_UserDialog.Edit(newClient, Clients, Managers, Statuses)) return;
+           if (!_UserDialog.EditClient(newClient, Clients, Managers, Statuses)) return;
 
             _Clients.Add(_ClientsRepository.Add(newClient));
 
@@ -132,7 +128,16 @@ namespace AvicomTestTask.ViewModels
         private void OnRemoveClientCommandExecuted(Client c)
         {
             var clientToRemove = c ?? SelectedClient;
-            
+
+            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить клиента {clientToRemove.Name}?", "Удаление клиента"))
+                return;
+
+            _ClientsRepository.Remove(clientToRemove.Id);
+
+            Clients.Remove(clientToRemove);
+            if (ReferenceEquals(SelectedClient, clientToRemove))
+                SelectedClient = null;
+
         }
 
 

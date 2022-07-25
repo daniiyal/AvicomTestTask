@@ -1,5 +1,4 @@
 ﻿using AvicomTestTask.DAL.Context;
-using AvicomTestTask.DAL.Entities;
 using AvicomTestTask.DAL.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -47,7 +46,8 @@ namespace AvicomTestTask.DAL
 
         public void Remove(int id)
         {
-            _db.Remove(new T { Id = id });
+            var item = _Set.Local.FirstOrDefault(i => i.Id == id) ?? new T { Id = id };
+            _db.Remove(item);
             _db.SaveChanges();
         }
 
@@ -71,28 +71,5 @@ namespace AvicomTestTask.DAL
             _db.Entry(item).State = EntityState.Modified;
             await _db.SaveChangesAsync(Cancel).ConfigureAwait(false);
         }
-    }
-    
-    class ProductsRepository : DbRepository<Product>
-    {
-        public ProductsRepository(SoftTradeDB db) : base(db)
-        {
-        }
-
-        public override IQueryable<Product> Items => base.Items
-            .Include(item => item.ProductType)
-            .Include(item => item.SubscriptionTime);
-    }
-
-    class ClientRepository : DbRepository<Client>
-    {
-        public ClientRepository(SoftTradeDB db) : base(db)
-        {
-        }
-
-        public override IQueryable<Client> Items => base.Items
-            .Include(item => item.Status)
-            .Include(item => item.Manager)
-            ;
     }
 }
